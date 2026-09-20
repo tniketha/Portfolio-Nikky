@@ -32,6 +32,12 @@ To update the CV, edit `scripts/create-cv.py` and run it with Python and ReportL
 
 ## Deployment
 
+The public portfolio is hosted at https://tniketha.github.io/Portfolio-Nikky/.
+
+GitHub Actions checks, builds, and publishes the site whenever changes are pushed to `main`. The workflow is in `.github/workflows/deploy.yml`. In the repository's Pages settings, the source must be set to **GitHub Actions**.
+
+For a local GitHub Pages build, run `npm run build -- --mode github-pages`. This uses `/Portfolio-Nikky/` for asset and CV links. Normal builds keep `/` for other hosting providers.
+
 The site is a static Vite build. Fonts load from Google Fonts, and live statistics come from the public GitHub API. No API keys are required.
 
 ## Verified
