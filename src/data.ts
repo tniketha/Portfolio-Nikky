@@ -1,9 +1,22 @@
 export const projects = [
- {title:'Digital Attendance',subtitle:'Less admin. More teaching.',category:'Web development',type:'CONCEPT & INTERACTIVE DEMO',stack:['HTML','CSS','PHP','MySQL'],description:'An attendance-management concept that reverses the routine: select the students who are present, and automatically mark everyone else absent.',features:['Present-only selection reduces repetitive input','Student records and attendance reporting','A simple interface for lecturers'],kind:'attendance'},
- {title:'DNA Sequence Analyzer',subtitle:'Finding stories in sequences.',category:'Python & bioinformatics',type:'PYTHON PROJECT',stack:['Python','Pandas','Matplotlib'],description:'Exploring biological sequences through code. Read DNA data, measure sequence length, count bases, and calculate GC content for clearer biological insights.',features:['A, T, C and G base-frequency analysis','GC-content calculation and sequence validation','CSV export and visual summaries'],kind:'dna'},
- {title:'Bioinformatics Insights',subtitle:'Making complex data human.',category:'Data analysis',type:'DATA EXPLORATION',stack:['Python','Pandas','NumPy','Matplotlib'],description:'A data exploration workflow for biological datasets, from cleaning and category counts to disease-status analysis and understandable visualizations.',features:['Dataset loading, cleaning and exploration','Disease-status and category analysis','Bar charts and statistical interpretation'],kind:'data'},
- {title:'Candidate Elimination',subtitle:'Learning how machines learn.',category:'Machine learning',type:'ALGORITHM IMPLEMENTATION',stack:['Python','Concept learning'],description:'An implementation of Candidate Elimination to explore how positive and negative examples refine the specific and general boundaries of a version space.',features:['Specific and general boundary calculation','Positive and negative example processing','Version-space representation'],kind:'ml'},
- {title:'MIPS String Processing',subtitle:'Closer to the machine.',category:'Computer architecture',type:'ASSEMBLY PROGRAMMING',stack:['MIPS','Assembly'],description:'Low-level string-processing programs exploring registers, memory operations, and the instructions that turn logic into computation.',features:['Read strings and calculate their length','Compare strings and process characters','Implement loops, branches and memory operations'],kind:'assembly'}
+ {
+  title: 'Smart Attendance',
+  subtitle: 'A simpler way to manage classroom attendance.',
+  category: 'Full-stack application',
+  type: 'WEB & MOBILE APPLICATION',
+  stack: ['TypeScript', 'React Native', 'Expo', 'Node.js', 'Express', 'MongoDB', 'Prisma', 'Socket.IO'],
+  description: 'A classroom attendance application for students, lecturers, and administrators. Students check in with rotating QR codes, while lecturers manage sessions, follow live attendance, and review correction requests.',
+  features: [
+   'Signed, rotating QR codes with expiry and duplicate check-in prevention',
+   'Location checks for attendance sessions when enabled',
+   'Separate student, lecturer, and administrator workflows',
+   'Live lecturer rosters, student history, and attendance analytics',
+   'Correction requests with lecturer review and audit records',
+   'CSV attendance reports and light, dark, and system themes'
+  ],
+  kind: 'attendance',
+  repository: 'https://github.com/tniketha/SmartAttendance'
+ }
 ];
 export type Project = typeof projects[number];
 export const email='nikkytamilneshan@gmail.com';
