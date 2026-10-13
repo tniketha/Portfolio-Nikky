@@ -18,16 +18,16 @@ Create a production build with `npm run build`. Preview that build with `npm run
 - Dark and blueprint themes; optional sound; motion pause and system reduced-motion support.
 - Accessible terminal dialog (`Ctrl/Cmd + K`): `help`, `cat about.txt`, `ls projects`, `skills`, `contact`, `theme`, `clear`, and `exit`.
 - Live public GitHub repository and follower counts, with a graceful unavailable state.
-- DNA-sequence analysis with validation and CSV export, plus a browser-only attendance concept demo.
+- Smart Attendance project showcase with verified features, a workflow illustration, and a direct repository link.
 - Downloadable monochrome, single-column CV with education, skills, projects, courses, and participation.
 - Filterable certificate cards with confirmed issuers, dates, credential IDs, team names, and original documents.
 - Contact form that prepares an email draft. It does not send messages or claim delivery.
 
 ## Update content
 
-Project descriptions and the email address are in `src/data.ts`. Sections and project demos are in `src/Sections.tsx`; global controls are in `src/App.tsx`. The 3D scene is in `src/Scene.tsx` and styling is in `src/style.css`.
+Project descriptions and the email address are in `src/data.ts`. Sections and project details are in `src/Sections.tsx`; global controls are in `src/App.tsx`. The 3D scene is in `src/Scene.tsx` and styling is in `src/style.css`.
 
-The profile card uses a typographic monogram. Project cards open details and interactive demos, with links to my GitHub profile.
+The profile card uses a typographic monogram. The featured project opens its details and links to the SmartAttendance repository.
 
 Certificate records are shared by the portfolio and CV in `src/certificates.json`. Renamed originals are in `public/certificates/`; the source files supplied by the owner are preserved. Course completions and participation are labeled separately.
 
@@ -45,7 +45,7 @@ The site is a static Vite build. Fonts load from Google Fonts, and live statisti
 
 ## Verified
 
-TypeScript compilation and production build; desktop and mobile layout inspection; terminal commands; attendance total updates; DNA GC-content calculation and invalid-input handling; theme switching; contact draft creation; CV rendering.
+TypeScript compilation and production build; desktop and mobile layout inspection; terminal commands; Smart Attendance project details and repository links; theme switching; contact draft creation; CV rendering.
 
 ## Author
 
