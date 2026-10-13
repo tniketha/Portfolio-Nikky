@@ -33,7 +33,8 @@ p('NIKETHA THAVANESWARAN', 'NameCV')
 p('Computer Science Undergraduate', 'RoleCV')
 p('Jaffna, Sri Lanka | <link href="mailto:tn.niketha@gmail.com">tn.niketha@gmail.com</link><br/>'
   '<link href="https://github.com/tniketha">github.com/tniketha</link> | '
-  '<link href="https://tniketha.github.io/Portfolio-Nikky/">tniketha.github.io/Portfolio-Nikky</link>', 'MetaCV')
+  '<link href="https://tniketha.github.io/Portfolio-Nikky/">tniketha.github.io/Portfolio-Nikky</link><br/>'
+  '<link href="https://www.linkedin.com/in/niketha-thavaneswaran/">linkedin.com/in/niketha-thavaneswaran</link>', 'MetaCV')
 story.append(HRFlowable(width='100%', thickness=0.6, color=black))
 section('PROFILE')
 p('Computer Science undergraduate with interests in software development, machine learning, and data analysis. '
