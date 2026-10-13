@@ -20,3 +20,5 @@ export const projects = [
 ];
 export type Project = typeof projects[number];
 export const email='tn.niketha@gmail.com';
+
+export const linkedin='https://www.linkedin.com/in/niketha-thavaneswaran/';
