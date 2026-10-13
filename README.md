@@ -19,7 +19,8 @@ Create a production build with `npm run build`. Preview that build with `npm run
 - Accessible terminal dialog (`Ctrl/Cmd + K`): `help`, `cat about.txt`, `ls projects`, `skills`, `contact`, `theme`, `clear`, and `exit`.
 - Live public GitHub repository and follower counts, with a graceful unavailable state.
 - DNA-sequence analysis with validation and CSV export, plus a browser-only attendance concept demo.
-- Downloadable one-page CV with education, skills, and projects.
+- Downloadable monochrome, single-column CV with education, skills, projects, courses, and participation.
+- Filterable certificate cards with confirmed issuers, dates, credential IDs, team names, and original documents.
 - Contact form that prepares an email draft. It does not send messages or claim delivery.
 
 ## Update content
@@ -27,6 +28,8 @@ Create a production build with `npm run build`. Preview that build with `npm run
 Project descriptions and the email address are in `src/data.ts`. Sections and project demos are in `src/Sections.tsx`; global controls are in `src/App.tsx`. The 3D scene is in `src/Scene.tsx` and styling is in `src/style.css`.
 
 The profile card uses a typographic monogram. Project cards open details and interactive demos, with links to my GitHub profile.
+
+Certificate records are shared by the portfolio and CV in `src/certificates.json`. Renamed originals are in `public/certificates/`; the source files supplied by the owner are preserved. Course completions and participation are labeled separately.
 
 To update the CV, edit `scripts/create-cv.py` and run it with Python and ReportLab installed. Replace `public/Niketha-Thavaneswaran-CV.pdf` with an updated CV at any time.
 
@@ -43,3 +46,7 @@ The site is a static Vite build. Fonts load from Google Fonts, and live statisti
 ## Verified
 
 TypeScript compilation and production build; desktop and mobile layout inspection; terminal commands; attendance total updates; DNA GC-content calculation and invalid-input handling; theme switching; contact draft creation; CV rendering.
+
+## Author
+
+tniketha
