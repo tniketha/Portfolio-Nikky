@@ -16,9 +16,9 @@ for name, font, size, leading, after in [
     ('RoleCV', 'Helvetica', 10, 14, 3),
     ('MetaCV', 'Helvetica', 9, 13, 7),
     ('SectionCV', 'Helvetica-Bold', 10, 13, 5),
-    ('BodyCV', 'Helvetica', 10, 13.5, 4),
-    ('ProjectCV', 'Helvetica', 10, 13, 5),
-    ('CertificateCV', 'Helvetica', 9.5, 13, 2),
+    ('BodyCV', 'Helvetica', 10.5, 14, 5),
+    ('ProjectCV', 'Helvetica', 10.5, 14, 5),
+    ('CertificateCV', 'Helvetica', 10.5, 14, 3),
 ]:
     styles.add(ParagraphStyle(name=name, fontName=font, fontSize=size, leading=leading,
         textColor=black, spaceAfter=after, spaceBefore=8 if name=='SectionCV' else 0,
@@ -37,23 +37,21 @@ p('Jaffna, Sri Lanka | <link href="mailto:tn.niketha@gmail.com">tn.niketha@gmail
 story.append(HRFlowable(width='100%', thickness=0.6, color=black))
 section('PROFILE')
 p('Computer Science undergraduate with interests in software development, machine learning, and data analysis. '
-  'Project work spans Python sequence analysis, data visualization, and algorithm implementation. Seeking internship and collaborative project opportunities.')
+  'Developed Smart Attendance, a classroom attendance application using React Native, Expo, TypeScript, and an Express API. Seeking internship and collaborative project opportunities.')
 section('EDUCATION')
 p('<b>B.Sc. (Hons) Computer Science</b> | Current undergraduate<br/>University of Vavuniya, Sri Lanka')
 p('<b>Relevant coursework:</b> Data Structures and Algorithms, Machine Learning, Artificial Intelligence, Database Management Systems, Computer Architecture, Bioinformatics, and Human-Computer Interaction.')
 section('TECHNICAL SKILLS')
-p('<b>Languages:</b> Python, Java, C, HTML, CSS, PHP, SQL, MIPS and 8086 Assembly<br/>'
+p('<b>Languages:</b> TypeScript, Python, Java, C, HTML, CSS, PHP, SQL, MIPS and 8086 Assembly<br/>'
   '<b>Data &amp; ML:</b> Pandas, NumPy, Matplotlib, Scikit-learn; data cleaning and visualization<br/>'
-  '<b>Databases &amp; tools:</b> MySQL, Git, GitHub, VS Code, Jupyter Notebook, Google Colab, Laragon, Android Studio')
-section('PROJECTS')
-for title, stack, description in [
-    ('DNA Sequence Analyzer', 'Python, Pandas, Matplotlib', 'Reads DNA sequences, calculates GC content and base frequencies, and exports CSV results and visualizations.'),
-    ('Bioinformatics Data Visualization', 'Python, Pandas, NumPy, Matplotlib', 'Cleans and explores biological datasets using category counts, disease-status analysis, and visual summaries.'),
-    ('Candidate Elimination', 'Python', 'Implements specific and general hypothesis boundaries to explore concept learning and version spaces.'),
-    ('MIPS String Processing', 'MIPS Assembly', 'Explores string length, character processing, comparison, loops, and branching.'),
-    ('Digital Attendance Management', 'HTML, CSS, PHP, MySQL | Concept', 'Designs a present-only attendance workflow that automatically marks remaining students absent.'),
-]:
-    p(f'<b>{title}</b> | {escape(stack)}<br/>{description}', 'ProjectCV')
+  '<b>Application development:</b> React Native, Expo, Node.js, Express, Prisma, Socket.IO<br/><b>Databases &amp; tools:</b> MongoDB, MySQL, Git, GitHub, VS Code, Jupyter Notebook, Google Colab, Android Studio')
+section('PROJECT')
+p('<b>Smart Attendance</b> | Web &amp; mobile application', 'ProjectCV')
+p('TypeScript, React Native, Expo, Node.js, Express, MongoDB, Prisma, Socket.IO', 'ProjectCV')
+p('Developed student, lecturer, and administrator workflows for classroom attendance management.', 'ProjectCV')
+p('Implemented signed, rotating QR check-ins with expiry, duplicate prevention, and optional session location checks.', 'ProjectCV')
+p('Added live lecturer rosters, student attendance history and analytics, correction requests, and CSV reports.', 'ProjectCV')
+p('<link href="https://github.com/tniketha/SmartAttendance">github.com/tniketha/SmartAttendance</link>', 'ProjectCV')
 section('COURSES &amp; CERTIFICATES')
 for c in certificates:
     if c['category'] == 'Course completion':
