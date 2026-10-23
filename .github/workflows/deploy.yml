@@ -25,6 +25,8 @@ jobs:
           cache: npm
       - name: Install project dependencies
         run: npm ci
+      - name: Check scene pause and frame scheduling
+        run: npm test
       - name: Check and build the portfolio
         run: npm run build -- --mode github-pages
       - name: Prepare GitHub Pages

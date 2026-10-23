@@ -1,6 +1,6 @@
 # NIKKY - Interactive portfolio
 
-A responsive portfolio for Niketha Thavaneswaran, built with React 19, TypeScript, Vite, Tailwind CSS 4, Framer Motion, Lenis, and Three.js.
+A responsive portfolio for Niketha Thavaneswaran, built with React 19, TypeScript, Vite, Tailwind CSS 4, Framer Motion, and Three.js.
 
 ## Run locally
 
@@ -13,14 +13,14 @@ Create a production build with `npm run build`. Preview that build with `npm run
 
 ## Features
 
-- Interactive, lazy-loaded 3D gold sculpture with an animated orbital particle field.
-- Smooth scrolling, responsive project stack, 3D card tilt, cursor spotlight, and scroll-linked timeline.
+- Interactive, lazy-loaded 3D gold sculpture with a 30 fps decorative animation budget; animation stops off-screen, in hidden tabs, or when paused.
+- Native wheel/touch scrolling, smooth anchor links, responsive project galleries, card tilt, and a scroll-linked timeline.
 - Dark and blueprint themes; optional sound; motion pause and system reduced-motion support.
 - Accessible terminal dialog (`Ctrl/Cmd + K`): `help`, `cat about.txt`, `ls projects`, `skills`, `contact`, `theme`, `clear`, and `exit`.
 - Live public GitHub repository and follower counts, with a graceful unavailable state.
 - Smart Attendance and ShopFlow case studies with repository-backed features, engineering decisions, and direct source links.
 - Interactive screenshot galleries with six real application screens per project, full-size image links, and desktop/mobile views.
-- Downloadable monochrome, single-column CV with education, skills, projects, courses, and participation.
+- One-page internship CV with aligned section rules, education and expected graduation, technical skills, project evidence, courses, and participation.
 - Filterable certificate cards with confirmed issuers, dates, credential IDs, team names, and original documents.
 - Contact form that prepares an email draft. It does not send messages or claim delivery.
 
@@ -32,7 +32,11 @@ The profile card uses a typographic monogram. Both projects identify `tniketha` 
 
 Certificate records are shared by the portfolio and CV in `src/certificates.json`. Renamed originals are in `public/certificates/`; the source files supplied by the owner are preserved. Course completions and participation are labeled separately.
 
-To update the CV, edit `scripts/create-cv.py` and run it with Python and ReportLab installed. Replace `public/Niketha-Thavaneswaran-CV.pdf` with an updated CV at any time.
+To update the CV, edit `scripts/cv_layout.py`, then run `python scripts/create-cv.py` with ReportLab installed. The current version records final-year study and expected graduation in June 2027. Its layout uses selectable text, consistent section rules, aligned dates, and hanging bullet indents. Replace `public/Niketha-Thavaneswaran-CV.pdf` with an updated CV at any time.
+
+CV readability and targeting follow [Harvard Career Services guidance](https://careerservices.fas.harvard.edu/resources/create-a-strong-resume/). Review the role-specific wording against each internship description before applying.
+
+Run `npm test` to check the decorative scene's scheduling: inactive scenes schedule no frames, pause cancels pending work, and re-entry resumes one loop with a 30 fps rendering cap. Wheel and touch scrolling use the browser directly; only anchor navigation uses smooth scrolling. GitHub Actions runs these checks before publishing.
 
 ## Deployment
 
