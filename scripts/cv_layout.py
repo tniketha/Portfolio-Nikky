@@ -81,31 +81,31 @@ def build_cv(root: Path, private_reference=None):
          'Computer Architecture, Human-Computer Interaction.', 'meta')
 
     section('TECHNICAL SKILLS')
-    text('<b>Languages:</b> TypeScript, JavaScript, SQL, Python, Java, C')
+    text('<b>Languages:</b> JavaScript, TypeScript, SQL, Python, Java, C')
     text('<b>Frontend:</b> React, Next.js, React Native, Expo, HTML, CSS, Tailwind CSS')
-    text('<b>Backend &amp; databases:</b> Node.js, Express, Fastify, Prisma, PostgreSQL, MongoDB')
+    text('<b>Backend &amp; databases:</b> Node.js, Express, PostgreSQL (pg), MongoDB driver')
     text('<b>Tools &amp; practices:</b> Git, GitHub, REST APIs, transactions, unit and integration testing')
 
     section('TECHNICAL PROJECTS')
     story.append(AlignedLine('<b>ShopFlow</b> | Retail web application', 'Sole developer', body))
-    text('Next.js, React, TypeScript, Tailwind CSS, Fastify, PostgreSQL, Prisma | '
+    text('JavaScript, Next.js, React, Tailwind CSS, Express, PostgreSQL, SQL | '
          '<link href="https://github.com/tniketha/ShopFlow">github.com/tniketha/ShopFlow</link>', 'meta')
     bullet('Built a responsive Next.js workspace connecting product management, supplier purchases, '
-           'cash checkout, stock totals, and sales history through Fastify REST APIs.')
-    bullet('Used serializable PostgreSQL transactions, conditional stock updates, and request keys '
+           'cash checkout, stock totals, and sales history through Express REST APIs.')
+    bullet('Used parameterized SQL, serializable transactions, product row locks, and request keys '
            'to prevent overselling and duplicate purchases or sales on retry.')
     bullet('Enforced store isolation and role permissions; used integer LKR cents and saved product-price '
            'snapshots to preserve accurate sale records.')
     bullet('Added PostgreSQL integration tests for concurrent checkout, repeated requests, insufficient stock, '
-           'transaction rollback, and access across store boundaries.')
+           'transaction rollback, store boundaries, and SQL migrations.')
     story.append(Spacer(1, 7))
     story.append(AlignedLine('<b>Smart Attendance</b> | Web and mobile application', 'Sole developer', body))
-    text('React Native, Expo, TypeScript, Express, MongoDB, Prisma | '
+    text('JavaScript, React Native, Expo, Express, MongoDB | '
          '<link href="https://github.com/tniketha/SmartAttendance">github.com/tniketha/SmartAttendance</link>', 'meta')
-    bullet('Built React Native and Expo student and lecturer screens backed by an Express API for '
+    bullet('Built JavaScript student and lecturer screens with React Native and Expo, backed by Express for '
            'module-based class creation, QR check-in, and semester attendance tracking.')
     bullet('Validated QR tokens, active classes, and enrollment timing; used unique attendance records '
-           'and MongoDB transactions to prevent duplicates and coordinate check-in with class closure.')
+           'and direct MongoDB driver transactions to prevent duplicates and coordinate check-in with closure.')
     bullet('Recorded missing students as absent when classes close; calculated completed-class statistics '
            'and provided filtered attendance history and lecturer CSV exports.')
     bullet('Added API integration tests for role restrictions, invalid QR codes, duplicate check-ins, '

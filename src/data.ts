@@ -33,12 +33,12 @@ export const projects: Project[] = [
     "kind": "attendance",
     "author": "tniketha",
     "stack": [
-      "TypeScript",
+      "JavaScript",
       "React Native",
       "Expo",
+      "Node.js",
       "Express",
-      "MongoDB",
-      "Prisma"
+      "MongoDB"
     ],
     "description": "A university attendance application for students and lecturers. Lecturers start module-based classes and display a QR code; students check in and review their semester attendance.",
     "problem": "Manual class registers take time and make semester follow-up difficult. I connected student check-in, lecturer class management, and attendance reporting through a shared interface and API.",
@@ -58,7 +58,7 @@ export const projects: Project[] = [
     "decisions": [
       {
         "title": "Check attendance on the server.",
-        "description": "The Express API verifies the QR token, active class, enrollment timing, and duplicate records. A database transaction coordinates check-in with class closure."
+        "description": "The Express API verifies the QR token, active class, enrollment timing, and duplicate records. Direct MongoDB queries use a unique student/class index and transactions to coordinate check-in with class closure."
       },
       {
         "title": "Count completed classes consistently.",
@@ -75,8 +75,8 @@ export const projects: Project[] = [
         "role": "REST API, sign-in & attendance rules"
       },
       {
-        "name": "Prisma + MongoDB",
-        "role": "Modules, enrollment, classes & records"
+        "name": "MongoDB driver",
+        "role": "Direct queries, unique indexes & transactions"
       }
     ],
     "screenshots": [
@@ -146,13 +146,14 @@ export const projects: Project[] = [
     "kind": "shopflow",
     "author": "tniketha",
     "stack": [
-      "TypeScript",
+      "JavaScript",
       "Next.js",
       "React",
       "Tailwind CSS",
-      "Fastify",
+      "Node.js",
+      "Express",
       "PostgreSQL",
-      "Prisma"
+      "SQL"
     ],
     "description": "An inventory and cash-sales workspace for a small shop. Manage products and suppliers, receive purchases, complete cash checkout, and review saved sales in one responsive application.",
     "problem": "Receiving stock and selling products must update the same inventory reliably. I built a clear product-to-purchase-to-sale workflow, with consistent stock records and accurate LKR amounts.",
@@ -167,16 +168,21 @@ export const projects: Project[] = [
       "Manage suppliers and receive purchases at a stated unit cost to increase stock",
       "Choose products, enter whole-unit quantities and cash received, and save a sale",
       "View saved sale numbers, dates, and totals in sales history",
-      "Session-based store isolation and owner/manager/cashier permissions enforced by the API"
+      "Session-based store isolation and owner/manager/cashier permissions enforced by the API",
+      "Numbered SQL migrations with checksums and database constraints for stock and money"
     ],
     "decisions": [
       {
         "title": "Save stock and transactions together.",
-        "description": "Serializable PostgreSQL transactions save purchases or sales alongside stock changes. Conditional stock updates prevent overselling, and request keys let an uncertain request be retried without recording it twice."
+        "description": "Parameterized SQL through pg saves purchases or sales alongside stock changes in serializable transactions. Checkout locks product rows in a consistent order and checks stock; request keys prevent duplicate records on retry."
       },
       {
         "title": "Preserve accurate sale amounts.",
         "description": "Prices use integer LKR cents, with decimal input parsed as text. Completed sales retain the product names and prices used at checkout, even when the catalogue changes."
+      },
+      {
+        "title": "Keep database changes traceable.",
+        "description": "Numbered SQL migrations record checksums and skip previously applied files. Database constraints protect stock, money, and store relationships; migration tests check that existing store records are preserved."
       }
     ],
     "architecture": [
@@ -185,12 +191,12 @@ export const projects: Project[] = [
         "role": "Responsive forms and store screens"
       },
       {
-        "name": "Fastify",
+        "name": "Node.js + Express",
         "role": "REST API, sessions & input checks"
       },
       {
-        "name": "Prisma + PostgreSQL",
-        "role": "Atomic stock, purchases & cash sales"
+        "name": "PostgreSQL + pg",
+        "role": "Parameterized SQL, transactions & migrations"
       }
     ],
     "screenshots": [

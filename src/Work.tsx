@@ -6,7 +6,7 @@ import type { Project, ProjectScreenshot } from './data';
 import './work.css';
 
 function screenshotPath(project: Project, shot: ProjectScreenshot) {
- return `${import.meta.env.BASE_URL}projects/${project.kind}/${shot.file}?v=20261025`;
+ return `${import.meta.env.BASE_URL}projects/${project.kind}/${shot.file}?v=20261025-js-projects`;
 }
 
 function ScreenshotGallery({ project }: { project: Project }) {

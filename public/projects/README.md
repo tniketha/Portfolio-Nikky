@@ -6,10 +6,10 @@ All 17 current JPEG screenshots are copied byte-for-byte from the published proj
 
 | Local folder | Source | Verified source commit |
 | --- | --- | --- |
-| attendance/ (9 screens) | [SmartAttendance gallery](https://github.com/tniketha/SmartAttendance/tree/d2a47b0e1c731906acd4d5e4c3ee0752f6df0e78/docs/screenshots) | d2a47b0e1c731906acd4d5e4c3ee0752f6df0e78 |
-| shopflow/ (8 screens) | [ShopFlow gallery](https://github.com/tniketha/ShopFlow/tree/67175859babe6a43082543f96abfb8bd7674fba1/docs/screenshots) | 67175859babe6a43082543f96abfb8bd7674fba1 |
+| attendance/ (9 screens) | [SmartAttendance gallery](https://github.com/tniketha/SmartAttendance/tree/a0036c7157b76f0b22fdbc934746a975ffea3676/docs/screenshots) | a0036c7157b76f0b22fdbc934746a975ffea3676 |
+| shopflow/ (8 screens) | [ShopFlow gallery](https://github.com/tniketha/ShopFlow/tree/c6b79706dbe0ee7650579cf79bc91e83f98b9201/docs/screenshots) | c6b79706dbe0ee7650579cf79bc91e83f98b9201 |
 
 Smart Attendance: sign-in, student dashboard, semester summary, history, modules, lecturer dashboard, class QR, attendance list, and module reports.
 ShopFlow: overview, inventory, cash checkout, purchases, sales history, sign-in, mobile overview, and mobile checkout.
 
-Third-party packages and photographs retain their licenses. [ShopFlow asset credits](https://github.com/tniketha/ShopFlow/blob/67175859babe6a43082543f96abfb8bd7674fba1/docs/ASSETS.md).
+Third-party packages and photographs retain their licenses. [ShopFlow asset credits](https://github.com/tniketha/ShopFlow/blob/c6b79706dbe0ee7650579cf79bc91e83f98b9201/docs/ASSETS.md).
