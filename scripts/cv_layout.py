@@ -1,13 +1,15 @@
-"""Readable, single-column internship resume. All text remains selectable."""
+"""Readable internship resume with linked certificates. All text remains selectable."""
 import json
+from datetime import date
 from pathlib import Path
+from urllib.parse import quote
 from xml.sax.saxutils import escape
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import Flowable, HRFlowable, Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import Flowable, HRFlowable, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer
 
 
 class AlignedLine(Flowable):
@@ -110,21 +112,50 @@ def build_cv(root: Path):
            'class closure, expiry, semester reports, and logout token revocation.')
 
     certificates = json.loads((root / 'src/certificates.json').read_text(encoding='utf-8'))
-    section('SELECTED COURSES')
-    courses = [c['title'] for c in certificates
-               if c['category'] == 'Course completion' and c['title'] in ('C Intermediate', 'SQL Intermediate')]
-    text('<b>Sololearn | Feb 2026:</b> ' + '; '.join(escape(c) for c in courses) + '.', 'meta')
+    story.append(PageBreak())
+    text('<b>NIKETHA THAVANESWARAN</b> | Certificates &amp; participation', 'meta')
+    text('Click an underlined certificate title to view the original document.', 'meta')
+    for category, heading in [
+        ('Course completion', 'COURSE COMPLETION CERTIFICATES'),
+        ('Competition participation', 'PROGRAMMING COMPETITION PARTICIPATION'),
+        ('Professional development', 'PROFESSIONAL DEVELOPMENT'),
+    ]:
+        section(heading)
+        for certificate in certificates:
+            if certificate['category'] != category:
+                continue
+            path = root / 'public/certificates' / certificate['file']
+            if not path.is_file():
+                raise FileNotFoundError(path)
+            url = 'https://tniketha.github.io/Portfolio-Nikky/certificates/' + quote(certificate['file'])
+            title = escape(certificate['title'].replace('\u2019', "'"))
+            issued = date.fromisoformat(certificate['date']).strftime('%d %b %Y')
+            details = escape(certificate['issuer'])
+            if certificate.get('credentialId'):
+                details += ' | Credential ID: ' + escape(certificate['credentialId'])
+            if certificate.get('team'):
+                details += ' | Team: ' + escape(certificate['team'])
+            story.append(KeepTogether([
+                AlignedLine(f'<link href="{url}" color="#174a75"><u><b>{title}</b></u></link>', issued, body),
+                Paragraph(details, styles['meta']),
+                Spacer(1, 7),
+            ]))
 
-    section('COMPETITIONS &amp; ACTIVITIES')
-    text('<b>IEEE IEEEXtreme:</b> 19.0 (Oct 2025), team DigitalVanguard; '
-         '18.0 (Oct 2024), team TheChiefs. Programming competition participant.', 'meta')
-    text("<b>AIESEC:</b> Member. <b>Trailblazers '24:</b> Professional development participant, "
-         'AIESEC in University of Peradeniya (Dec 2024).', 'meta')
+    section('COMMUNITY INVOLVEMENT')
+    text('<b>AIESEC:</b> Member.', 'meta')
+
+    def page_footer(canvas, document):
+        canvas.saveState()
+        canvas.setFont('Helvetica', 8)
+        canvas.setFillColor(colors.HexColor('#666666'))
+        canvas.drawString(44, 20, 'Niketha Thavaneswaran | Software Engineering & Full-stack Internships')
+        canvas.drawRightString(A4[0] - 44, 20, f'Page {document.page}')
+        canvas.restoreState()
 
     output = root / 'public/Niketha-Thavaneswaran-CV.pdf'
     doc = SimpleDocTemplate(str(output), pagesize=A4, leftMargin=44, rightMargin=44,
                             topMargin=34, bottomMargin=34,
                             title='Niketha Thavaneswaran - Software Engineering Internship CV',
                             author='tniketha', subject='Software engineering and full-stack development internships')
-    doc.build(story)
+    doc.build(story, onFirstPage=page_footer, onLaterPages=page_footer)
     print(f'Created CV: {output}')
