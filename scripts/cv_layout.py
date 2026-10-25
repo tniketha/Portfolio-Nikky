@@ -36,6 +36,10 @@ class AlignedLine(Flowable):
 
 
 def build_cv(root: Path, private_reference=None):
+    reference_file = root / 'src/cv-reference.json'
+    reference = private_reference or (
+        json.loads(reference_file.read_text(encoding='utf-8')) if reference_file.is_file() else None
+    )
     body = ParagraphStyle('Body', fontName='Helvetica', fontSize=11, leading=15.5,
                           textColor=colors.HexColor('#171717'), spaceAfter=3)
     styles = {
@@ -146,15 +150,15 @@ def build_cv(root: Path, private_reference=None):
     text('<b>IEEE:</b> Member.', 'meta')
     text('<b>Zero Plastic, University of Vavuniya:</b> Member.', 'meta')
 
-    if private_reference:
+    if reference:
         section('REFERENCE')
-        text('<b>' + escape(private_reference['name']) + '</b> | ' + escape(private_reference['role']))
-        text(escape(private_reference['qualifications']), 'meta')
-        phone = escape(private_reference['phone'])
-        phone_uri = quote(private_reference['phone'].replace(' ', ''), safe='+')
-        email_address = escape(private_reference['email'])
+        text('<b>' + escape(reference['name']) + '</b> | ' + escape(reference['role']))
+        text(escape(reference['qualifications']), 'meta')
+        phone = escape(reference['phone'])
+        phone_uri = quote(reference['phone'].replace(' ', ''), safe='+')
+        email_address = escape(reference['email'])
         text(f'<link href="tel:{phone_uri}" color="#174a75"><u>{phone}</u></link> | '
-             f'<link href="mailto:{quote(private_reference["email"], safe="@")}" color="#174a75">'
+             f'<link href="mailto:{quote(reference["email"], safe="@")}" color="#174a75">'
              f'<u>{email_address}</u></link>')
 
     def page_footer(canvas, document):
