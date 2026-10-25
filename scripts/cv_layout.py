@@ -81,7 +81,7 @@ def build_cv(root: Path):
     section('TECHNICAL SKILLS')
     text('<b>Languages:</b> TypeScript, Python, Java, C, SQL, JavaScript, HTML, CSS, PHP')
     text('<b>Frontend:</b> React, Next.js, React Native, Expo, Tailwind CSS')
-    text('<b>Backend &amp; databases:</b> Node.js, Express, Fastify, Prisma, Socket.IO, PostgreSQL, MongoDB, MySQL')
+    text('<b>Backend &amp; databases:</b> Node.js, Express, Fastify, Prisma, PostgreSQL, MongoDB, MySQL')
     text('<b>Tools &amp; practices:</b> Git, GitHub, REST APIs, role-based access, database transactions, integration testing')
     text('<b>Data &amp; machine learning:</b> Pandas, NumPy, Matplotlib, Scikit-learn, Jupyter Notebook')
 
@@ -89,22 +89,22 @@ def build_cv(root: Path):
     story.append(AlignedLine('<b>ShopFlow</b> | Retail web application', 'Sole developer', body))
     text('Next.js, React, TypeScript, Tailwind CSS, Fastify, PostgreSQL, Prisma | '
          '<link href="https://github.com/tniketha/ShopFlow">github.com/tniketha/ShopFlow</link>', 'meta')
-    bullet('Built a responsive retail workspace for inventory, supplier purchases, barcode-assisted cash checkout, '
-           'partial refunds, PDF invoices, and sales reporting.')
+    bullet('Built a responsive inventory and cash-sales application with product and category management, '
+           'supplier purchases, cash checkout, an overview dashboard, and sales history.')
     bullet('Implemented Fastify REST APIs, PostgreSQL transactions, and owner, manager, and cashier permissions '
            'to keep stock updates consistent and isolate business data.')
     bullet('Protected retries with unique request keys and represented amounts in integer LKR cents '
            'to prevent duplicate transactions and monetary rounding errors.')
     story.append(Spacer(1, 7))
     story.append(AlignedLine('<b>Smart Attendance</b> | Web and mobile application', 'Sole developer', body))
-    text('React Native, Expo, TypeScript, Express, MongoDB, Prisma, Socket.IO | '
+    text('React Native, Expo, TypeScript, Express, MongoDB, Prisma | '
          '<link href="https://github.com/tniketha/SmartAttendance">github.com/tniketha/SmartAttendance</link>', 'meta')
-    bullet('Built student, lecturer, and administrator workflows using shared React Native and Expo code '
-           'for web, Android, and iOS.')
-    bullet('Implemented signed, expiring QR check-ins with enrollment validation, duplicate prevention, '
-           'and optional location checks through an Express API.')
-    bullet('Delivered Socket.IO live rosters with polling recovery, semester-based attendance insights, '
-           'CSV exports, and audited correction requests.')
+    bullet('Built student and lecturer workflows with React Native and Expo, connecting semester modules, '
+           'class QR check-in, and attendance history to an Express API.')
+    bullet('Validated active-class QR tokens, enrollment timing, and duplicate check-ins on the server; '
+           'used MongoDB transactions to coordinate check-in with class closure.')
+    bullet('Implemented present, late, and absent records, lecturer-refreshed class lists, semester statistics, '
+           'filtered student history, and module CSV exports.')
 
     certificates = json.loads((root / 'src/certificates.json').read_text(encoding='utf-8'))
     section('COURSES &amp; CERTIFICATES')

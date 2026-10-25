@@ -19,7 +19,7 @@ Create a production build with `npm run build`. Preview that build with `npm run
 - Accessible terminal dialog (`Ctrl/Cmd + K`): `help`, `cat about.txt`, `ls projects`, `skills`, `contact`, `theme`, `clear`, and `exit`.
 - Live public GitHub repository and follower counts, with a graceful unavailable state.
 - Smart Attendance and ShopFlow case studies with repository-backed features, engineering decisions, and direct source links.
-- Interactive screenshot galleries with six real application screens per project, full-size image links, and desktop/mobile views.
+- Interactive screenshot galleries with all current application screens (nine for Smart Attendance and eight for ShopFlow), full-size image links, and desktop/mobile views.
 - One-page internship CV with aligned section rules, education and expected graduation, technical skills, project evidence, courses, and participation.
 - Filterable certificate cards with confirmed issuers, dates, credential IDs, team names, and original documents.
 - Contact form that prepares an email draft. It does not send messages or claim delivery.

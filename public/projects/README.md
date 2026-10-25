@@ -1,14 +1,15 @@
-# Project screenshots
+# Current project screenshots
 
 Project author and owner: **tniketha**.
 
-These original JPEG captures are copied without alteration from the project's own repository. They show fictional demonstration data, not real customers or measured adoption. Mobile screens are responsive web captures, not native device photographs.
+All 17 current JPEG screenshots are copied byte-for-byte from the published project repositories. Earlier gallery images have been replaced. Records are fictional demonstration data; mobile captures are responsive browser views.
 
-| Local folder | Source | Source commit |
+| Local folder | Source | Verified source commit |
 | --- | --- | --- |
-| `attendance/` | [SmartAttendance screenshot gallery](https://github.com/tniketha/SmartAttendance/tree/95a859ce6c7f978a0855c89203302dee8b3590b7/docs/screenshots) | `95a859ce6c7f978a0855c89203302dee8b3590b7` |
-| `shopflow/` | [ShopFlow screenshot gallery](https://github.com/tniketha/ShopFlow/tree/f09e839c57d869aba0a0fd3f672e48afda358b27/docs/screenshots) | `f09e839c57d869aba0a0fd3f672e48afda358b27` |
+| attendance/ (9 screens) | [SmartAttendance gallery](https://github.com/tniketha/SmartAttendance/tree/d2a47b0e1c731906acd4d5e4c3ee0752f6df0e78/docs/screenshots) | d2a47b0e1c731906acd4d5e4c3ee0752f6df0e78 |
+| shopflow/ (8 screens) | [ShopFlow gallery](https://github.com/tniketha/ShopFlow/tree/67175859babe6a43082543f96abfb8bd7674fba1/docs/screenshots) | 67175859babe6a43082543f96abfb8bd7674fba1 |
 
-Smart Attendance includes lecturer tools, a temporary session QR, a live roster, student views, and administration. ShopFlow includes overview, checkout, inventory, reports, CSV preview, and mobile checkout. The source repositories contain the complete galleries and project case studies.
+Smart Attendance: sign-in, student dashboard, semester summary, history, modules, lecturer dashboard, class QR, attendance list, and module reports.
+ShopFlow: overview, inventory, cash checkout, purchases, sales history, sign-in, mobile overview, and mobile checkout.
 
-Third-party packages and product photographs retain their respective licenses and credits. ShopFlow photography credits are documented in its [PHOTOS.md](https://github.com/tniketha/ShopFlow/blob/f09e839c57d869aba0a0fd3f672e48afda358b27/docs/PHOTOS.md).
+Third-party packages and photographs retain their licenses. [ShopFlow asset credits](https://github.com/tniketha/ShopFlow/blob/67175859babe6a43082543f96abfb8bd7674fba1/docs/ASSETS.md).

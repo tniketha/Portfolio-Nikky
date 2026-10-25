@@ -25,83 +25,227 @@ export interface Project {
 }
 
 export const projects: Project[] = [
- {
-  title: 'Smart Attendance',
-  subtitle: 'From classroom check-in to a clear attendance record.',
-  category: 'Education · Web & mobile',
-  type: 'FULL-STACK ATTENDANCE APPLICATION',
-  kind: 'attendance',
-  author: 'tniketha',
-  stack: ['TypeScript', 'React Native', 'Expo', 'Express', 'MongoDB', 'Prisma', 'Socket.IO'],
-  description: 'A connected attendance workflow for students, lecturers, and administrators. Rotating QR check-ins feed live classroom rosters, while students track their progress and request reviewed corrections.',
-  problem: 'Manual roll calls interrupt classes, and disconnected records make follow-up difficult. I built a shared application that connects check-in, session management, reporting, and corrections across three user roles.',
-  highlights: ['Rotating QR check-in', 'Live lecturer rosters', 'Role-based access'],
-  features: [
-   'Signed, expiring QR codes with enrollment checks and duplicate prevention',
-   'Optional session location checks and separate student, lecturer, and administrator workflows',
-   'Live rosters, semester-based attendance insights, and CSV reports',
-   'Lecturer-reviewed correction requests with an audit history',
-   'Responsive layouts, light and dark themes, and shared web and mobile code'
-  ],
-  decisions: [
-   { title: 'Validate beyond the QR code.', description: 'The API checks the account, enrollment, session state, and configured location rules before accepting attendance. Transactions protect check-ins when a lecturer closes a session at the same time.' },
-   { title: 'Keep live views recoverable.', description: 'Authenticated Socket.IO updates keep lecturer rosters current, with polling recovery after a dropped connection. Approved corrections and their audit entries commit together.' }
-  ],
-  architecture: [
-   { name: 'React Native + Expo', role: 'Shared client for web, Android & iOS' },
-   { name: 'Express + Socket.IO', role: 'API, authorization & live updates' },
-   { name: 'Prisma + MongoDB', role: 'Sessions, attendance & audit records' }
-  ],
-  screenshots: [
-   { file: 'lecturer-dashboard-desktop.jpg', label: 'Lecturer', alt: 'Smart Attendance lecturer dashboard with an active Computer Architecture session', caption: 'Lecturer dashboard · Start sessions and follow attendance.' },
-   { file: 'live-qr-desktop.jpg', label: 'Live QR', alt: 'Smart Attendance rotating QR screen for a temporary classroom session', caption: 'Live QR · A short-lived code connects students to the current session.' },
-   { file: 'live-roster-desktop.jpg', label: 'Roster', alt: 'Smart Attendance live roster showing fictional present and late students', caption: 'Live roster · Check-ins appear in the lecturer’s session view.' },
-   { file: 'student-dashboard-mobile.jpg', label: 'Student', alt: 'Smart Attendance student dashboard at a phone-sized browser width', caption: 'Student dashboard · Responsive web view with demo attendance records.' },
-   { file: 'student-analytics-mobile.jpg', label: 'Insights', alt: 'Smart Attendance mobile web insights with a subject attendance breakdown', caption: 'Student insights · Explore attendance by subject and semester.' },
-   { file: 'admin-dashboard-desktop.jpg', label: 'Admin', alt: 'Smart Attendance administrator dashboard with a demonstration audit entry', caption: 'Administration · System activity and an attendance correction audit trail.' }
-  ],
-  scope: 'Built for web, Android, and iOS with Expo. Screenshots show the responsive web app with fictional demo records. QR and location checks reduce misuse but cannot prove physical presence; native device acceptance and institutional deployment are separate steps.',
-  repository: 'https://github.com/tniketha/SmartAttendance'
- },
- {
-  title: 'ShopFlow',
-  subtitle: 'Stock, sales, and the next step for a store.',
-  category: 'Retail · Responsive web',
-  type: 'FULL-STACK RETAIL WORKSPACE',
-  kind: 'shopflow',
-  author: 'tniketha',
-  stack: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'Fastify', 'PostgreSQL', 'Prisma'],
-  description: 'A retail workspace that brings inventory, purchasing, cash checkout, refunds, and reporting together. Built around clear store workflows, accurate LKR totals, and consistent stock records.',
-  problem: 'Purchases, sales, and returns all affect the same stock. I built a workspace that connects those operations, gives each store role the right tools, and keeps financial and inventory records consistent.',
-  highlights: ['Inventory & purchasing', 'Cash checkout & refunds', 'Sales insights & exports'],
-  features: [
-   'Product inventory, category filters, barcode lookup, favourites, and product photos',
-   'Supplier purchases and receiving with stock movement records',
-   'Cash checkout, PDF invoices, partial refunds, and stock restoration',
-   'Sales insights, low-stock alerts, and CSV/PDF reports using Sri Lanka business dates',
-   'CSV import with row-level validation and a preview before saving',
-   'Server-enforced owner, manager, and cashier permissions with business-isolated data'
-  ],
-  decisions: [
-   { title: 'Keep stock changes together.', description: 'Serializable PostgreSQL transactions commit checkout, purchase receipts, or refunds alongside their stock movements. Request keys protect successful operations from being recorded twice on retry.' },
-   { title: 'Make money calculations explicit.', description: 'Amounts use integer LKR cents. Sales retain the original product and price snapshots, while refunds enforce returned-quantity limits and restore stock atomically.' }
-  ],
-  architecture: [
-   { name: 'Next.js + React', role: 'Responsive store workspace' },
-   { name: 'Fastify', role: 'REST API, sessions & permissions' },
-   { name: 'Prisma + PostgreSQL', role: 'Transactions, stock & sales records' }
-  ],
-  screenshots: [
-   { file: '01-dashboard-desktop.jpg', label: 'Overview', alt: 'ShopFlow store dashboard with sample sales insights and low-stock information', caption: 'Store overview · Sales trends, top products, and stock at a glance.' },
-   { file: '03-pos-desktop.jpg', label: 'Checkout', alt: 'ShopFlow point of sale with photographed products and a two-item cash basket', caption: 'Point of sale · Product search, barcode entry, and a cash basket.' },
-   { file: '02-inventory-desktop.jpg', label: 'Inventory', alt: 'ShopFlow inventory catalogue with product filters, prices, and stock levels', caption: 'Inventory · A filterable catalogue with clear prices and stock status.' },
-   { file: '04-reports-desktop.jpg', label: 'Reports', alt: 'ShopFlow sales report with date filters and CSV and PDF export options', caption: 'Reports · Review sales and refunds for the selected business dates.' },
-   { file: '12-csv-import-desktop.jpg', label: 'CSV import', alt: 'ShopFlow CSV import preview flagging an invalid decimal price', caption: 'CSV import · Review row-level validation before saving products.' },
-   { file: '09-pos-mobile.jpg', label: 'Mobile', alt: 'ShopFlow point of sale at a phone-sized browser width', caption: 'Responsive checkout · The store workflow at a narrow web viewport.' }
-  ],
-  scope: 'A local full-stack project with cash payments and whole-unit inventory. Screenshots use fictional store data. The repository includes setup, tests, and deployment guidance; card payments and offline checkout are outside the current scope.',
-  repository: 'https://github.com/tniketha/ShopFlow'
- }
+  {
+    "title": "Smart Attendance",
+    "subtitle": "From a class QR code to a clear attendance record.",
+    "category": "Education · Web & mobile",
+    "type": "FULL-STACK ATTENDANCE APPLICATION",
+    "kind": "attendance",
+    "author": "tniketha",
+    "stack": [
+      "TypeScript",
+      "React Native",
+      "Expo",
+      "Express",
+      "MongoDB",
+      "Prisma"
+    ],
+    "description": "A university attendance application for students and lecturers. Lecturers start module-based classes and display a QR code; students check in and review their semester attendance.",
+    "problem": "Manual class registers take time and make semester follow-up difficult. I connected student check-in, lecturer class management, and attendance reporting through a shared interface and API.",
+    "highlights": [
+      "Class QR check-in",
+      "Student & lecturer workflows",
+      "Semester summaries & CSV"
+    ],
+    "features": [
+      "Sign in with an email or institutional ID, with separate student and lecturer screens",
+      "Select a semester and module, set the class duration, and display its QR code",
+      "Record present or late attendance with enrollment validation and one check-in per student per class",
+      "Refresh the class attendance list and close the class to mark missing enrolled students absent",
+      "View semester attendance statistics, filtered history, and enrolled modules",
+      "Review lecturer module reports and export attendance as CSV"
+    ],
+    "decisions": [
+      {
+        "title": "Check attendance on the server.",
+        "description": "The Express API verifies the QR token, active class, enrollment timing, and duplicate records. A database transaction coordinates check-in with class closure."
+      },
+      {
+        "title": "Count completed classes consistently.",
+        "description": "Closing or expiring a class records absences for missing enrolled students. Semester percentages count present and late records across completed classes, excluding active ones."
+      }
+    ],
+    "architecture": [
+      {
+        "name": "React Native + Expo",
+        "role": "Shared student and lecturer interface"
+      },
+      {
+        "name": "Express",
+        "role": "REST API, sign-in & attendance rules"
+      },
+      {
+        "name": "Prisma + MongoDB",
+        "role": "Modules, enrollment, classes & records"
+      }
+    ],
+    "screenshots": [
+      {
+        "file": "lecturer-dashboard-desktop.jpg",
+        "label": "Lecturer",
+        "alt": "Smart Attendance lecturer dashboard with semester modules and class controls",
+        "caption": "Lecturer dashboard · Choose a semester and module to start a class."
+      },
+      {
+        "file": "session-qr-desktop.jpg",
+        "label": "Class QR",
+        "alt": "Smart Attendance active class displaying its QR code",
+        "caption": "Class QR · Enrolled students scan while the class is active."
+      },
+      {
+        "file": "session-attendance-desktop.jpg",
+        "label": "Attendance",
+        "alt": "Smart Attendance class list with present and late demo students and a refresh button",
+        "caption": "Class attendance · Refresh the list to review student check-ins."
+      },
+      {
+        "file": "lecturer-reports-desktop.jpg",
+        "label": "Reports",
+        "alt": "Smart Attendance lecturer module attendance report",
+        "caption": "Module reports · Review attendance and export CSV records."
+      },
+      {
+        "file": "student-dashboard-mobile.jpg",
+        "label": "Student",
+        "alt": "Smart Attendance student dashboard at a mobile web width",
+        "caption": "Student dashboard · Semester modules and attendance at a glance."
+      },
+      {
+        "file": "student-attendance-mobile.jpg",
+        "label": "Summary",
+        "alt": "Smart Attendance My Attendance semester statistics on mobile web",
+        "caption": "My Attendance · Semester statistics from completed classes."
+      },
+      {
+        "file": "student-history-mobile.jpg",
+        "label": "History",
+        "alt": "Smart Attendance filtered student attendance history",
+        "caption": "Attendance history · Review records with semester and module filters."
+      },
+      {
+        "file": "student-modules-mobile.jpg",
+        "label": "Modules",
+        "alt": "Smart Attendance student enrolled modules by semester",
+        "caption": "My modules · Browse enrolled semester modules."
+      },
+      {
+        "file": "sign-in-mobile.jpg",
+        "label": "Sign in",
+        "alt": "Smart Attendance mobile web sign-in screen",
+        "caption": "Sign in · Use an email or institutional ID."
+      }
+    ],
+    "scope": "An undergraduate demonstration built with React Native and Expo, with web, Android, and iOS development targets. These are current browser captures using fictional university records. QR check-in is available only during an active class and does not prove physical presence.",
+    "repository": "https://github.com/tniketha/SmartAttendance"
+  },
+  {
+    "title": "ShopFlow",
+    "subtitle": "Add products. Receive stock. Complete a cash sale.",
+    "category": "Retail · Responsive web",
+    "type": "FULL-STACK INVENTORY & CASH SALES",
+    "kind": "shopflow",
+    "author": "tniketha",
+    "stack": [
+      "TypeScript",
+      "Next.js",
+      "React",
+      "Tailwind CSS",
+      "Fastify",
+      "PostgreSQL",
+      "Prisma"
+    ],
+    "description": "An inventory and cash-sales workspace for a small shop. Manage products and suppliers, receive purchases, complete cash checkout, and review saved sales in one responsive application.",
+    "problem": "Receiving stock and selling products must update the same inventory reliably. I built a clear product-to-purchase-to-sale workflow, with consistent stock records and accurate LKR amounts.",
+    "highlights": [
+      "Products & supplier purchases",
+      "Cash checkout & stock checks",
+      "Overview & sales history"
+    ],
+    "features": [
+      "Overview with today’s sales, transaction count, product count, units in stock, and recent sales",
+      "Search, add, edit, and archive products; manage categories and display product photos",
+      "Manage suppliers and receive purchases at a stated unit cost to increase stock",
+      "Choose products, enter whole-unit quantities and cash received, and save a sale",
+      "View saved sale numbers, dates, and totals in sales history",
+      "Session-based store isolation and owner/manager/cashier permissions enforced by the API"
+    ],
+    "decisions": [
+      {
+        "title": "Save stock and transactions together.",
+        "description": "Serializable PostgreSQL transactions save purchases or sales alongside stock changes. Conditional stock updates prevent overselling, and request keys let an uncertain request be retried without recording it twice."
+      },
+      {
+        "title": "Preserve accurate sale amounts.",
+        "description": "Prices use integer LKR cents, with decimal input parsed as text. Completed sales retain the product names and prices used at checkout, even when the catalogue changes."
+      }
+    ],
+    "architecture": [
+      {
+        "name": "Next.js + React",
+        "role": "Responsive forms and store screens"
+      },
+      {
+        "name": "Fastify",
+        "role": "REST API, sessions & input checks"
+      },
+      {
+        "name": "Prisma + PostgreSQL",
+        "role": "Atomic stock, purchases & cash sales"
+      }
+    ],
+    "screenshots": [
+      {
+        "file": "01-dashboard-desktop.jpg",
+        "label": "Overview",
+        "alt": "ShopFlow Ceylon Corner overview with daily sales, stock totals and recent sales",
+        "caption": "Overview · Today’s sales, transactions, products, stock, and recent sales."
+      },
+      {
+        "file": "02-inventory-desktop.jpg",
+        "label": "Inventory",
+        "alt": "ShopFlow current product inventory with photos, prices and stock",
+        "caption": "Inventory · Search and manage products, categories, and stock."
+      },
+      {
+        "file": "05-purchases-desktop.jpg",
+        "label": "Purchases",
+        "alt": "ShopFlow supplier purchase screen for receiving product stock",
+        "caption": "Purchases · Receive supplier stock at a stated unit cost."
+      },
+      {
+        "file": "03-pos-desktop.jpg",
+        "label": "Checkout",
+        "alt": "ShopFlow current cash checkout with products and basket",
+        "caption": "Point of sale · Select products, quantities, and cash received."
+      },
+      {
+        "file": "06-sales-desktop.jpg",
+        "label": "Sales history",
+        "alt": "ShopFlow saved sales history with sale numbers, dates and totals",
+        "caption": "Sales history · Review saved cash transactions."
+      },
+      {
+        "file": "08-dashboard-mobile.jpg",
+        "label": "Mobile overview",
+        "alt": "ShopFlow overview at a phone-sized browser width",
+        "caption": "Mobile overview · The same store totals in a responsive layout."
+      },
+      {
+        "file": "09-pos-mobile.jpg",
+        "label": "Mobile checkout",
+        "alt": "ShopFlow cash checkout at a phone-sized browser width",
+        "caption": "Mobile checkout · Build and save a cash sale on a narrow screen."
+      },
+      {
+        "file": "07-login-desktop.jpg",
+        "label": "Sign in",
+        "alt": "ShopFlow current sign-in screen with empty credential fields",
+        "caption": "Sign in · Access the store workspace with your account."
+      }
+    ],
+    "scope": "A local full-stack project supporting cash payments and whole-unit stock. Screenshots show fictional Ceylon Corner store records. The source includes fresh-database setup helpers and unit and PostgreSQL integration tests.",
+    "repository": "https://github.com/tniketha/ShopFlow"
+  }
 ];
 
 export const email = 'tn.niketha@gmail.com';
