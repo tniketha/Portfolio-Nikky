@@ -76,40 +76,44 @@ def build_cv(root: Path):
     story.append(AlignedLine('<b>University of Vavuniya</b>', 'Sri Lanka', body))
     story.append(AlignedLine('B.Sc. (Hons) Computer Science', '<b>Expected June 2027</b>', body))
     text('Final year | Relevant coursework: Data Structures and Algorithms, Database Management Systems, '
-         'Machine Learning, Artificial Intelligence, Computer Architecture, Human-Computer Interaction.', 'meta')
+         'Computer Architecture, Human-Computer Interaction.', 'meta')
 
     section('TECHNICAL SKILLS')
-    text('<b>Languages:</b> TypeScript, Python, Java, C, SQL, JavaScript, HTML, CSS, PHP')
-    text('<b>Frontend:</b> React, Next.js, React Native, Expo, Tailwind CSS')
-    text('<b>Backend &amp; databases:</b> Node.js, Express, Fastify, Prisma, PostgreSQL, MongoDB, MySQL')
-    text('<b>Tools &amp; practices:</b> Git, GitHub, REST APIs, role-based access, database transactions, integration testing')
-    text('<b>Data &amp; machine learning:</b> Pandas, NumPy, Matplotlib, Scikit-learn, Jupyter Notebook')
+    text('<b>Languages:</b> TypeScript, JavaScript, SQL, Python, Java, C')
+    text('<b>Frontend:</b> React, Next.js, React Native, Expo, HTML, CSS, Tailwind CSS')
+    text('<b>Backend &amp; databases:</b> Node.js, Express, Fastify, Prisma, PostgreSQL, MongoDB')
+    text('<b>Tools &amp; practices:</b> Git, GitHub, REST APIs, transactions, unit and integration testing')
 
     section('TECHNICAL PROJECTS')
     story.append(AlignedLine('<b>ShopFlow</b> | Retail web application', 'Sole developer', body))
     text('Next.js, React, TypeScript, Tailwind CSS, Fastify, PostgreSQL, Prisma | '
          '<link href="https://github.com/tniketha/ShopFlow">github.com/tniketha/ShopFlow</link>', 'meta')
-    bullet('Built a responsive inventory and cash-sales application with product and category management, '
-           'supplier purchases, cash checkout, an overview dashboard, and sales history.')
-    bullet('Implemented Fastify REST APIs, PostgreSQL transactions, and owner, manager, and cashier permissions '
-           'to keep stock updates consistent and isolate business data.')
-    bullet('Protected retries with unique request keys and represented amounts in integer LKR cents '
-           'to prevent duplicate transactions and monetary rounding errors.')
+    bullet('Built a responsive Next.js workspace connecting product management, supplier purchases, '
+           'cash checkout, stock totals, and sales history through Fastify REST APIs.')
+    bullet('Used serializable PostgreSQL transactions, conditional stock updates, and request keys '
+           'to prevent overselling and duplicate purchases or sales on retry.')
+    bullet('Enforced store isolation and role permissions; used integer LKR cents and saved product-price '
+           'snapshots to preserve accurate sale records.')
+    bullet('Added PostgreSQL integration tests for concurrent checkout, repeated requests, insufficient stock, '
+           'transaction rollback, and access across store boundaries.')
     story.append(Spacer(1, 7))
     story.append(AlignedLine('<b>Smart Attendance</b> | Web and mobile application', 'Sole developer', body))
     text('React Native, Expo, TypeScript, Express, MongoDB, Prisma | '
          '<link href="https://github.com/tniketha/SmartAttendance">github.com/tniketha/SmartAttendance</link>', 'meta')
-    bullet('Built student and lecturer workflows with React Native and Expo, connecting semester modules, '
-           'class QR check-in, and attendance history to an Express API.')
-    bullet('Validated active-class QR tokens, enrollment timing, and duplicate check-ins on the server; '
-           'used MongoDB transactions to coordinate check-in with class closure.')
-    bullet('Implemented present, late, and absent records, lecturer-refreshed class lists, semester statistics, '
-           'filtered student history, and module CSV exports.')
+    bullet('Built React Native and Expo student and lecturer screens backed by an Express API for '
+           'module-based class creation, QR check-in, and semester attendance tracking.')
+    bullet('Validated QR tokens, active classes, and enrollment timing; used unique attendance records '
+           'and MongoDB transactions to prevent duplicates and coordinate check-in with class closure.')
+    bullet('Recorded missing students as absent when classes close; calculated completed-class statistics '
+           'and provided filtered attendance history and lecturer CSV exports.')
+    bullet('Added API integration tests for role restrictions, invalid QR codes, duplicate check-ins, '
+           'class closure, expiry, semester reports, and logout token revocation.')
 
     certificates = json.loads((root / 'src/certificates.json').read_text(encoding='utf-8'))
-    section('COURSES &amp; CERTIFICATES')
-    courses = [c['title'] for c in certificates if c['category'] == 'Course completion']
-    text('<b>Sololearn | Jan-Feb 2026:</b> ' + '; '.join(escape(c) for c in courses) + '.', 'meta')
+    section('SELECTED COURSES')
+    courses = [c['title'] for c in certificates
+               if c['category'] == 'Course completion' and c['title'] in ('C Intermediate', 'SQL Intermediate')]
+    text('<b>Sololearn | Feb 2026:</b> ' + '; '.join(escape(c) for c in courses) + '.', 'meta')
 
     section('COMPETITIONS &amp; ACTIVITIES')
     text('<b>IEEE IEEEXtreme:</b> 19.0 (Oct 2025), team DigitalVanguard; '
