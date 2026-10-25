@@ -35,7 +35,7 @@ class AlignedLine(Flowable):
         self.right.drawOn(self.canv, self.width - self.right_width, 0)
 
 
-def build_cv(root: Path):
+def build_cv(root: Path, private_reference=None):
     body = ParagraphStyle('Body', fontName='Helvetica', fontSize=10.5, leading=14,
                           textColor=colors.HexColor('#171717'), spaceAfter=3)
     styles = {
@@ -143,6 +143,19 @@ def build_cv(root: Path):
 
     section('COMMUNITY INVOLVEMENT')
     text('<b>AIESEC:</b> Member.', 'meta')
+    text('<b>IEEE:</b> Member.', 'meta')
+    text('<b>Zero Plastic, University of Vavuniya:</b> Member.', 'meta')
+
+    if private_reference:
+        section('REFERENCE')
+        text('<b>' + escape(private_reference['name']) + '</b> | ' + escape(private_reference['role']))
+        text(escape(private_reference['qualifications']), 'meta')
+        phone = escape(private_reference['phone'])
+        phone_uri = quote(private_reference['phone'].replace(' ', ''), safe='+')
+        email_address = escape(private_reference['email'])
+        text(f'<link href="tel:{phone_uri}" color="#174a75"><u>{phone}</u></link> | '
+             f'<link href="mailto:{quote(private_reference["email"], safe="@")}" color="#174a75">'
+             f'<u>{email_address}</u></link>')
 
     def page_footer(canvas, document):
         canvas.saveState()
@@ -152,7 +165,9 @@ def build_cv(root: Path):
         canvas.drawRightString(A4[0] - 44, 20, f'Page {document.page}')
         canvas.restoreState()
 
-    output = root / 'public/Niketha-Thavaneswaran-CV.pdf'
+    folder = 'output/pdf' if private_reference else 'public'
+    output = root / folder / 'Niketha-Thavaneswaran-CV.pdf'
+    output.parent.mkdir(parents=True, exist_ok=True)
     doc = SimpleDocTemplate(str(output), pagesize=A4, leftMargin=44, rightMargin=44,
                             topMargin=34, bottomMargin=34,
                             title='Niketha Thavaneswaran - Software Engineering Internship CV',
