@@ -155,11 +155,8 @@ def build_cv(root: Path, private_reference=None):
         text('<b>' + escape(reference['name']) + '</b> | ' + escape(reference['role']))
         text(escape(reference['qualifications']), 'meta')
         phone = escape(reference['phone'])
-        phone_uri = quote(reference['phone'].replace(' ', ''), safe='+')
         email_address = escape(reference['email'])
-        text(f'<link href="tel:{phone_uri}" color="#174a75"><u>{phone}</u></link> | '
-             f'<link href="mailto:{quote(reference["email"], safe="@")}" color="#174a75">'
-             f'<u>{email_address}</u></link>')
+        text(f'{phone} | {email_address}')
 
     def page_footer(canvas, document):
         canvas.saveState()
