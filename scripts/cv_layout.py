@@ -36,20 +36,20 @@ class AlignedLine(Flowable):
 
 
 def build_cv(root: Path, private_reference=None):
-    body = ParagraphStyle('Body', fontName='Helvetica', fontSize=10.5, leading=14,
+    body = ParagraphStyle('Body', fontName='Helvetica', fontSize=11, leading=15.5,
                           textColor=colors.HexColor('#171717'), spaceAfter=3)
     styles = {
         'body': body,
         'name': ParagraphStyle('Name', parent=body, fontName='Helvetica-Bold', fontSize=22,
                                leading=26, alignment=TA_CENTER, spaceAfter=4),
-        'role': ParagraphStyle('Role', parent=body, fontSize=10.5, leading=14,
+        'role': ParagraphStyle('Role', parent=body, fontSize=11, leading=15.5,
                                alignment=TA_CENTER, spaceAfter=5),
         'contact': ParagraphStyle('Contact', parent=body, fontSize=9.5, leading=13,
                                   alignment=TA_CENTER, spaceAfter=2),
         'heading': ParagraphStyle('Heading', parent=body, fontName='Helvetica-Bold',
-                                  fontSize=10.5, leading=14, spaceBefore=9, spaceAfter=3,
+                                  fontSize=11, leading=15.5, spaceBefore=9, spaceAfter=3,
                                   keepWithNext=True),
-        'meta': ParagraphStyle('Meta', parent=body, fontSize=10, leading=13,
+        'meta': ParagraphStyle('Meta', parent=body, fontSize=10.5, leading=14.5,
                                textColor=colors.HexColor('#444444'), spaceAfter=3),
         'bullet': ParagraphStyle('Bullet', parent=body, leftIndent=11, bulletIndent=0,
                                  spaceAfter=3),
@@ -81,7 +81,7 @@ def build_cv(root: Path, private_reference=None):
          'Computer Architecture, Human-Computer Interaction.', 'meta')
 
     section('TECHNICAL SKILLS')
-    text('<b>Languages:</b> JavaScript, TypeScript, SQL, Python, Java, C')
+    text('<b>Languages:</b> JavaScript, SQL, Python, Java, C')
     text('<b>Frontend:</b> React, Next.js, React Native, Expo, HTML, CSS, Tailwind CSS')
     text('<b>Backend &amp; databases:</b> Node.js, Express, PostgreSQL (pg), MongoDB driver')
     text('<b>Tools &amp; practices:</b> Git, GitHub, REST APIs, transactions, unit and integration testing')

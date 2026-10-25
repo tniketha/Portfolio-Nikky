@@ -1,6 +1,6 @@
 # NIKKY - Interactive portfolio
 
-A responsive portfolio for Niketha Thavaneswaran, built with React 19, TypeScript, Vite, Tailwind CSS 4, Framer Motion, and Three.js.
+A responsive portfolio for Niketha Thavaneswaran, built with React 19, Vite, Tailwind CSS 4, Framer Motion, and Three.js.
 
 ## Run locally
 
@@ -50,7 +50,7 @@ The site is a static Vite build. Fonts load from Google Fonts, and live statisti
 
 ## Verified
 
-TypeScript compilation and production build; desktop and mobile layout inspection; terminal commands; both project case studies, screenshot controls, image paths, and repository links; theme switching; contact draft creation; CV rendering.
+Static checks and production build; desktop and mobile layout inspection; terminal commands; both project case studies, screenshot controls, image paths, and repository links; theme switching; contact draft creation; CV rendering.
 
 ## Author
 
