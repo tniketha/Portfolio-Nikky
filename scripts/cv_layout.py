@@ -78,6 +78,11 @@ def build_cv(root: Path, private_reference=None):
          '<link href="https://www.linkedin.com/in/niketha-thavaneswaran/">LinkedIn: niketha-thavaneswaran</link> | '
          '<link href="https://tniketha.github.io/Portfolio-Nikky/">Portfolio</link>', 'contact')
 
+    section('PROFILE')
+    text('Final-year Computer Science undergraduate with hands-on experience building web and mobile '
+         'applications using JavaScript, React, Node.js, and databases. Interested in practical problem-solving '
+         'and creating clear, reliable user workflows.')
+
     section('EDUCATION')
     story.append(AlignedLine('<b>University of Vavuniya</b>', '<b>2023-2027</b>', body))
     text('B.Sc. (Hons) Computer Science | Final year')
@@ -144,17 +149,7 @@ def build_cv(root: Path, private_reference=None):
 
     if reference:
         section('REFERENCE')
-        text('<b>' + escape(reference['name']) + '</b>')
-        text(escape(reference['role']), 'meta')
-        qualifications = reference['qualifications'].split(', M.Sc.')
-        degree_lines = [qualifications[0]]
-        if len(qualifications) > 1:
-            remaining = ('M.Sc.' + qualifications[1]).split(', Ph.D.')
-            degree_lines.append(remaining[0])
-            if len(remaining) > 1:
-                degree_lines.append('Ph.D.' + remaining[1])
-        for qualification in degree_lines:
-            text(escape(qualification), 'meta')
+        text('<b>' + escape(reference['name']) + '</b> | ' + escape(reference['role']))
         text(escape(reference['phone']), 'meta')
         text(escape(reference['email']), 'meta')
 
