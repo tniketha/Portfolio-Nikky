@@ -88,10 +88,10 @@ def build_cv(root: Path, private_reference=None):
     text('B.Sc. (Hons) Computer Science | Final year')
 
     section('TECHNICAL SKILLS')
-    text('<b>Languages:</b> JavaScript, SQL, Python, Java, C')
-    text('<b>Frontend:</b> React, Next.js, React Native, Expo, HTML, CSS, Tailwind CSS')
-    text('<b>Backend &amp; databases:</b> Node.js, Express, PostgreSQL, MongoDB')
-    text('<b>Tools:</b> Git, GitHub, REST APIs')
+    text('<b>Languages:</b> JavaScript, SQL, Python, Java, C, C++, PHP, MATLAB')
+    text('<b>Frontend:</b> React, Next.js, React Native, Expo, HTML, CSS, Sass, Tailwind CSS')
+    text('<b>Backend &amp; databases:</b> Node.js, Express, REST APIs, PostgreSQL, MongoDB')
+    text('<b>Tools:</b> Git, GitHub, VS Code, Postman, Laragon, Axure RP')
 
     section('PROJECTS')
     story.append(AlignedLine('<b>ShopFlow</b> | Inventory and cash sales', 'Sole developer', body))
