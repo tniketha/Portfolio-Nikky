@@ -150,8 +150,8 @@ def build_cv(root: Path, private_reference=None):
     if reference:
         section('REFERENCE')
         text('<b>' + escape(reference['name']) + '</b> | ' + escape(reference['role']))
-        text(escape(reference['phone']), 'meta')
-        text(escape(reference['email']), 'meta')
+        text(escape(reference['qualifications']), 'meta')
+        text(escape(reference['phone']) + ' | ' + escape(reference['email']), 'meta')
 
     folder = 'output/pdf' if private_reference else 'public'
     output = root / folder / 'Niketha-Thavaneswaran-CV.pdf'
