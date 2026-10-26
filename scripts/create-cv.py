@@ -1,4 +1,4 @@
-"""Build the internship CV with linked certificate documents."""
+"""Build the one-page CV with linked certificate documents."""
 from pathlib import Path
 import argparse
 import json

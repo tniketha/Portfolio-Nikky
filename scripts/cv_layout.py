@@ -1,4 +1,4 @@
-"""Readable internship resume with linked certificates. All text remains selectable."""
+"""One-page CV with linked certificates and a plain-text reference."""
 import json
 from datetime import date
 from pathlib import Path
@@ -9,7 +9,7 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.pagesizes import A4
 from reportlab.lib.styles import ParagraphStyle
-from reportlab.platypus import Flowable, HRFlowable, KeepTogether, PageBreak, Paragraph, SimpleDocTemplate, Spacer
+from reportlab.platypus import Flowable, HRFlowable, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 
 class AlignedLine(Flowable):
@@ -40,23 +40,23 @@ def build_cv(root: Path, private_reference=None):
     reference = private_reference or (
         json.loads(reference_file.read_text(encoding='utf-8')) if reference_file.is_file() else None
     )
-    body = ParagraphStyle('Body', fontName='Helvetica', fontSize=11, leading=15.5,
-                          textColor=colors.HexColor('#171717'), spaceAfter=3)
+    body = ParagraphStyle('Body', fontName='Helvetica', fontSize=10.5, leading=13,
+                          textColor=colors.HexColor('#171717'), spaceAfter=2)
     styles = {
         'body': body,
         'name': ParagraphStyle('Name', parent=body, fontName='Helvetica-Bold', fontSize=22,
-                               leading=26, alignment=TA_CENTER, spaceAfter=4),
-        'role': ParagraphStyle('Role', parent=body, fontSize=11, leading=15.5,
-                               alignment=TA_CENTER, spaceAfter=5),
-        'contact': ParagraphStyle('Contact', parent=body, fontSize=9.5, leading=13,
-                                  alignment=TA_CENTER, spaceAfter=2),
+                               leading=26, alignment=TA_CENTER, spaceAfter=3),
+        'role': ParagraphStyle('Role', parent=body, alignment=TA_CENTER, spaceAfter=3),
+        'contact': ParagraphStyle('Contact', parent=body, fontSize=9.5, leading=12,
+                                  alignment=TA_CENTER, spaceAfter=1),
         'heading': ParagraphStyle('Heading', parent=body, fontName='Helvetica-Bold',
-                                  fontSize=11, leading=15.5, spaceBefore=9, spaceAfter=3,
-                                  keepWithNext=True),
-        'meta': ParagraphStyle('Meta', parent=body, fontSize=10.5, leading=14.5,
-                               textColor=colors.HexColor('#444444'), spaceAfter=3),
-        'bullet': ParagraphStyle('Bullet', parent=body, leftIndent=11, bulletIndent=0,
-                                 spaceAfter=3),
+                                  spaceBefore=7, spaceAfter=2, keepWithNext=True),
+        'meta': ParagraphStyle('Meta', parent=body, fontSize=9.5, leading=12,
+                               textColor=colors.HexColor('#444444'), spaceAfter=2),
+        'certificate': ParagraphStyle('Certificate', parent=body, fontSize=9.5, leading=11.5,
+                                      spaceAfter=0),
+        'bullet': ParagraphStyle('Bullet', parent=body, leftIndent=10, bulletIndent=0,
+                                 spaceAfter=2),
     }
     story = []
 
@@ -65,113 +65,105 @@ def build_cv(root: Path, private_reference=None):
 
     def section(title):
         text(title, 'heading')
-        story.append(HRFlowable(width='100%', thickness=.45,
-                                color=colors.HexColor('#777777'), spaceAfter=6))
+        story.append(HRFlowable(width='100%', thickness=.4,
+                                color=colors.HexColor('#999999'), spaceAfter=4))
 
     def bullet(value):
         story.append(Paragraph(value, styles['bullet'], bulletText='-'))
 
     text('NIKETHA THAVANESWARAN', 'name')
-    text('Final-year Computer Science Undergraduate | Software Engineering &amp; Full-stack Internships', 'role')
+    text('Computer Science Undergraduate', 'role')
     text('Jaffna, Sri Lanka | <link href="mailto:tn.niketha@gmail.com">tn.niketha@gmail.com</link>', 'contact')
     text('<link href="https://github.com/tniketha">github.com/tniketha</link> | '
          '<link href="https://www.linkedin.com/in/niketha-thavaneswaran/">LinkedIn: niketha-thavaneswaran</link> | '
          '<link href="https://tniketha.github.io/Portfolio-Nikky/">Portfolio</link>', 'contact')
 
     section('EDUCATION')
-    story.append(AlignedLine('<b>University of Vavuniya</b>', 'Sri Lanka', body))
-    story.append(AlignedLine('B.Sc. (Hons) Computer Science', '<b>Expected June 2027</b>', body))
-    text('Final year | Relevant coursework: Data Structures and Algorithms, Database Management Systems, '
-         'Computer Architecture, Human-Computer Interaction.', 'meta')
+    story.append(AlignedLine('<b>University of Vavuniya</b>', '<b>2023-2027</b>', body))
+    text('B.Sc. (Hons) Computer Science | Final year')
 
     section('TECHNICAL SKILLS')
     text('<b>Languages:</b> JavaScript, SQL, Python, Java, C')
     text('<b>Frontend:</b> React, Next.js, React Native, Expo, HTML, CSS, Tailwind CSS')
-    text('<b>Backend &amp; databases:</b> Node.js, Express, PostgreSQL (pg), MongoDB driver')
-    text('<b>Tools &amp; practices:</b> Git, GitHub, REST APIs, transactions, unit and integration testing')
+    text('<b>Backend &amp; databases:</b> Node.js, Express, PostgreSQL, MongoDB')
+    text('<b>Tools:</b> Git, GitHub, REST APIs')
 
-    section('TECHNICAL PROJECTS')
-    story.append(AlignedLine('<b>ShopFlow</b> | Retail web application', 'Sole developer', body))
-    text('JavaScript, Next.js, React, Tailwind CSS, Express, PostgreSQL, SQL | '
+    section('PROJECTS')
+    story.append(AlignedLine('<b>ShopFlow</b> | Inventory and cash sales', 'Sole developer', body))
+    text('JavaScript, Next.js, React, Express, PostgreSQL | '
          '<link href="https://github.com/tniketha/ShopFlow">github.com/tniketha/ShopFlow</link>', 'meta')
-    bullet('Built a responsive Next.js workspace connecting product management, supplier purchases, '
-           'cash checkout, stock totals, and sales history through Express REST APIs.')
-    bullet('Used parameterized SQL, serializable transactions, product row locks, and request keys '
-           'to prevent overselling and duplicate purchases or sales on retry.')
-    bullet('Enforced store isolation and role permissions; used integer LKR cents and saved product-price '
-           'snapshots to preserve accurate sale records.')
-    bullet('Added PostgreSQL integration tests for concurrent checkout, repeated requests, insufficient stock, '
-           'transaction rollback, store boundaries, and SQL migrations.')
-    story.append(Spacer(1, 7))
-    story.append(AlignedLine('<b>Smart Attendance</b> | Web and mobile application', 'Sole developer', body))
+    bullet('Built a shop application to manage products and suppliers, receive stock, complete cash sales, '
+           'and view sales history.')
+    bullet('Receiving a purchase increases stock; checkout checks availability, records the sale, '
+           'and reduces stock while keeping the original product names and prices.')
+    story.append(Spacer(1, 4))
+    story.append(AlignedLine('<b>Smart Attendance</b> | QR attendance application', 'Sole developer', body))
     text('JavaScript, React Native, Expo, Express, MongoDB | '
          '<link href="https://github.com/tniketha/SmartAttendance">github.com/tniketha/SmartAttendance</link>', 'meta')
-    bullet('Built JavaScript student and lecturer screens with React Native and Expo, backed by Express for '
-           'module-based class creation, QR check-in, and semester attendance tracking.')
-    bullet('Validated QR tokens, active classes, and enrollment timing; used unique attendance records '
-           'and direct MongoDB driver transactions to prevent duplicates and coordinate check-in with closure.')
-    bullet('Recorded missing students as absent when classes close; calculated completed-class statistics '
-           'and provided filtered attendance history and lecturer CSV exports.')
-    bullet('Added API integration tests for role restrictions, invalid QR codes, duplicate check-ins, '
-           'class closure, expiry, semester reports, and logout token revocation.')
+    bullet('Built student and lecturer workflows: lecturers start a module-based class and display a QR code; '
+           'enrolled students scan it to record present or late attendance.')
+    bullet('Prevents duplicate check-ins, records missing students as absent when a class closes, '
+           'and provides semester summaries, attendance history, and lecturer CSV exports.')
 
+    section('CERTIFICATES &amp; PARTICIPATION')
     certificates = json.loads((root / 'src/certificates.json').read_text(encoding='utf-8'))
-    story.append(PageBreak())
-    text('<b>NIKETHA THAVANESWARAN</b> | Certificates &amp; participation', 'meta')
-    text('Click an underlined certificate title to view the original document.', 'meta')
-    for category, heading in [
-        ('Course completion', 'COURSE COMPLETION CERTIFICATES'),
-        ('Competition participation', 'PROGRAMMING COMPETITION PARTICIPATION'),
-        ('Professional development', 'PROFESSIONAL DEVELOPMENT'),
-    ]:
-        section(heading)
-        for certificate in certificates:
-            if certificate['category'] != category:
-                continue
-            path = root / 'public/certificates' / certificate['file']
-            if not path.is_file():
-                raise FileNotFoundError(path)
-            url = 'https://tniketha.github.io/Portfolio-Nikky/certificates/' + quote(certificate['file'])
-            title = escape(certificate['title'].replace('\u2019', "'"))
-            issued = date.fromisoformat(certificate['date']).strftime('%d %b %Y')
-            details = escape(certificate['issuer'])
-            if certificate.get('credentialId'):
-                details += ' | Credential ID: ' + escape(certificate['credentialId'])
-            if certificate.get('team'):
-                details += ' | Team: ' + escape(certificate['team'])
-            story.append(KeepTogether([
-                AlignedLine(f'<link href="{url}" color="#174a75"><u><b>{title}</b></u></link>', issued, body),
-                Paragraph(details, styles['meta']),
-                Spacer(1, 7),
-            ]))
+    cells = []
+    for certificate in certificates:
+        path = root / 'public/certificates' / certificate['file']
+        if not path.is_file():
+            raise FileNotFoundError(path)
+        url = 'https://tniketha.github.io/Portfolio-Nikky/certificates/' + quote(certificate['file'])
+        title = escape(certificate['title'].replace(chr(0x2019), "'"))
+        issued = date.fromisoformat(certificate['date']).strftime('%b %Y')
+        if certificate['category'] == 'Competition participation':
+            details = 'IEEE | Participation | ' + issued
+        elif certificate['category'] == 'Professional development':
+            details = 'AIESEC, University of Peradeniya | ' + issued
+        else:
+            details = escape(certificate['issuer']) + ' | ' + issued
+        cells.append(Paragraph(
+            f'<link href="{url}" color="#174a75"><u><b>{title}</b></u></link><br/>{details}',
+            styles['certificate']))
+    # Read each column from top to bottom; each certificate keeps its own document link.
+    middle = (len(cells) + 1) // 2
+    rows = [[cells[i], cells[i + middle] if i + middle < len(cells) else ''] for i in range(middle)]
+    table = Table(rows, colWidths=[(A4[0] - 92) / 2] * 2, hAlign='LEFT')
+    table.setStyle(TableStyle([
+        ('VALIGN', (0, 0), (-1, -1), 'TOP'),
+        ('LEFTPADDING', (0, 0), (0, -1), 0),
+        ('LEFTPADDING', (1, 0), (1, -1), 14),
+        ('RIGHTPADDING', (0, 0), (0, -1), 14),
+        ('RIGHTPADDING', (1, 0), (1, -1), 0),
+        ('TOPPADDING', (0, 0), (-1, -1), 2),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
+    ]))
+    story.append(table)
 
     section('COMMUNITY INVOLVEMENT')
-    text('<b>AIESEC:</b> Member.', 'meta')
-    text('<b>IEEE:</b> Member.', 'meta')
-    text('<b>Zero Plastic, University of Vavuniya:</b> Member.', 'meta')
+    text('AIESEC - Member | IEEE - Member | Zero Plastic, University of Vavuniya - Member', 'meta')
 
     if reference:
         section('REFERENCE')
-        text('<b>' + escape(reference['name']) + '</b> | ' + escape(reference['role']))
-        text(escape(reference['qualifications']), 'meta')
-        phone = escape(reference['phone'])
-        email_address = escape(reference['email'])
-        text(f'{phone} | {email_address}')
-
-    def page_footer(canvas, document):
-        canvas.saveState()
-        canvas.setFont('Helvetica', 8)
-        canvas.setFillColor(colors.HexColor('#666666'))
-        canvas.drawString(44, 20, 'Niketha Thavaneswaran | Software Engineering & Full-stack Internships')
-        canvas.drawRightString(A4[0] - 44, 20, f'Page {document.page}')
-        canvas.restoreState()
+        text('<b>' + escape(reference['name']) + '</b>')
+        text(escape(reference['role']), 'meta')
+        qualifications = reference['qualifications'].split(', M.Sc.')
+        degree_lines = [qualifications[0]]
+        if len(qualifications) > 1:
+            remaining = ('M.Sc.' + qualifications[1]).split(', Ph.D.')
+            degree_lines.append(remaining[0])
+            if len(remaining) > 1:
+                degree_lines.append('Ph.D.' + remaining[1])
+        for qualification in degree_lines:
+            text(escape(qualification), 'meta')
+        text(escape(reference['phone']), 'meta')
+        text(escape(reference['email']), 'meta')
 
     folder = 'output/pdf' if private_reference else 'public'
     output = root / folder / 'Niketha-Thavaneswaran-CV.pdf'
     output.parent.mkdir(parents=True, exist_ok=True)
-    doc = SimpleDocTemplate(str(output), pagesize=A4, leftMargin=44, rightMargin=44,
-                            topMargin=34, bottomMargin=34,
-                            title='Niketha Thavaneswaran - Software Engineering Internship CV',
-                            author='tniketha', subject='Software engineering and full-stack development internships')
-    doc.build(story, onFirstPage=page_footer, onLaterPages=page_footer)
+    doc = SimpleDocTemplate(str(output), pagesize=A4, leftMargin=40, rightMargin=40,
+                            topMargin=28, bottomMargin=28,
+                            title='Niketha Thavaneswaran - Curriculum Vitae',
+                            author='tniketha', subject='Computer Science curriculum vitae')
+    doc.build(story)
     print(f'Created CV: {output}')

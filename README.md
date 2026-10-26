@@ -20,7 +20,7 @@ Create a production build with `npm run build`. Preview that build with `npm run
 - Live public GitHub repository and follower counts, with a graceful unavailable state.
 - Smart Attendance and ShopFlow case studies with repository-backed features, engineering decisions, and direct source links.
 - Interactive screenshot galleries with all current application screens (nine for Smart Attendance and eight for ShopFlow), full-size image links, and desktop/mobile views.
-- Two-page internship CV with education, technical skills and project evidence on the first page, plus all eight certificates with clickable original-document links on the second page.
+- One-page CV with education, technical skills, concise project workflows, all eight clickable certificates in two columns, memberships, and a reference listed line by line.
 - Filterable certificate cards with confirmed issuers, dates, credential IDs, team names, and original documents.
 - Contact form that prepares an email draft. It does not send messages or claim delivery.
 
@@ -32,7 +32,7 @@ The profile card uses a typographic monogram. Both projects identify `tniketha` 
 
 Certificate records are shared by the portfolio and CV in `src/certificates.json`. Renamed originals are in `public/certificates/`; the source files supplied by the owner are preserved. Course completions and participation are labeled separately.
 
-To update the CV, edit `scripts/cv_layout.py`, then run `python scripts/create-cv.py` with ReportLab installed. The current version records final-year study and expected graduation in June 2027. Its layout uses selectable text, consistent section rules, aligned dates, and hanging bullet indents. Replace `public/Niketha-Thavaneswaran-CV.pdf` with an updated CV at any time.
+To update the CV, edit `scripts/cv_layout.py`, then run `python scripts/create-cv.py` with ReportLab installed. The current version records the 2023-2027 study period. Its layout uses selectable text, consistent section rules, aligned dates, and hanging bullet indents. Reference details are in `src/cv-reference.json`; their phone and email appear as plain text. Replace `public/Niketha-Thavaneswaran-CV.pdf` with an updated CV at any time.
 
 CV readability and targeting follow [Harvard Career Services guidance](https://careerservices.fas.harvard.edu/resources/create-a-strong-resume/). Review the role-specific wording against each internship description before applying.
 
