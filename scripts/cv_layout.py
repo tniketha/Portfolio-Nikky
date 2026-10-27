@@ -73,7 +73,7 @@ def build_cv(root: Path, private_reference=None):
 
     text('NIKETHA THAVANESWARAN', 'name')
     text('Computer Science Undergraduate', 'role')
-    text('Jaffna, Sri Lanka | <link href="mailto:tn.niketha@gmail.com">tn.niketha@gmail.com</link>', 'contact')
+    text('Jaffna, Sri Lanka | <link href="mailto:tn.niketha@gmail.com">tn.niketha@gmail.com</link> | <link href="tel:+94756819720">+94756819720</link>', 'contact')
     text('<link href="https://github.com/tniketha">github.com/tniketha</link> | '
          '<link href="https://www.linkedin.com/in/niketha-thavaneswaran/">LinkedIn: niketha-thavaneswaran</link> | '
          '<link href="https://tniketha.github.io/Portfolio-Nikky/">Portfolio</link>', 'contact')
