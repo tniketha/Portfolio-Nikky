@@ -15,9 +15,8 @@ Create a production build with `npm run build`. Preview that build with `npm run
 
 - Interactive, lazy-loaded 3D gold sculpture with a 30 fps decorative animation budget; animation stops off-screen, in hidden tabs, or when paused.
 - Native wheel/touch scrolling, smooth anchor links, responsive project galleries, card tilt, and a scroll-linked timeline.
-- Dark and blueprint themes; optional sound; motion pause and system reduced-motion support.
+- Dark and blueprint themes; motion pause and system reduced-motion support.
 - Accessible terminal dialog (`Ctrl/Cmd + K`): `help`, `cat about.txt`, `ls projects`, `skills`, `contact`, `theme`, `clear`, and `exit`.
-- Live public GitHub repository and follower counts, with a graceful unavailable state.
 - Smart Attendance and ShopFlow case studies with repository-backed features, engineering decisions, and direct source links.
 - Interactive screenshot galleries with all current application screens (nine for Smart Attendance and eight for ShopFlow), full-size image links, and desktop/mobile views.
 - One-page CV with education, technical skills, concise project workflows, all eight clickable certificates in two columns, memberships, and a reference listed line by line.
@@ -46,7 +45,7 @@ GitHub Actions checks, builds, and publishes the site whenever changes are pushe
 
 For a local GitHub Pages build, run `npm run build -- --mode github-pages`. This uses `/Portfolio-Nikky/` for asset and CV links. Normal builds keep `/` for other hosting providers.
 
-The site is a static Vite build. Fonts load from Google Fonts, and live statistics come from the public GitHub API. No API keys are required.
+The site is a static Vite build. Fonts load from Google Fonts. GitHub links open the profile and project source repositories directly; no API keys are required.
 
 ## Verified
 

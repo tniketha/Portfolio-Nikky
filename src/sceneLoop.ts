@@ -18,7 +18,7 @@ export function createSceneLoop({
   function tick(time: number) {
     frame = null;
     if (!isActive()) return;
-    if (previous === null || time - previous >= interval - .5) {
+    if (previous === null || time - previous >= interval - 0.5) {
       previous = time;
       render(time);
     }

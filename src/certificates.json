@@ -1,10 +1,73 @@
 [
-  {"title":"C Intermediate","issuer":"Sololearn","date":"2026-02-05","category":"Course completion","credentialId":"CC-7IR1LLRX","description":"Completed intermediate-level study in C, demonstrating theoretical and practical understanding of the language.","file":"niketha-thavaneswaran-sololearn-c-intermediate-2026-02-05.pdf"},
-  {"title":"Tech for Everyone","issuer":"Sololearn","date":"2026-02-05","category":"Course completion","credentialId":"CC-YUMGVKHY","description":"Completed foundational technology learning, demonstrating theoretical and practical understanding of the course material.","file":"niketha-thavaneswaran-sololearn-tech-for-everyone-2026-02-05.pdf"},
-  {"title":"Introduction to C","issuer":"Sololearn","date":"2026-02-04","category":"Course completion","credentialId":"CC-DHPDBC2V","description":"Completed introductory study in C, building a foundation for further programming practice.","file":"niketha-thavaneswaran-sololearn-introduction-to-c-2026-02-04.pdf"},
-  {"title":"SQL Intermediate","issuer":"Sololearn","date":"2026-02-01","category":"Course completion","credentialId":"CC-XATX2FSR","description":"Completed intermediate-level SQL study, demonstrating theoretical and practical understanding of the course material.","file":"niketha-thavaneswaran-sololearn-sql-intermediate-2026-02-01.pdf"},
-  {"title":"Introduction to SQL","issuer":"Sololearn","date":"2026-01-30","category":"Course completion","credentialId":"CC-RGM0P4VY","description":"Completed introductory SQL study, building a foundation for working with relational databases.","file":"niketha-thavaneswaran-sololearn-introduction-to-sql-2026-01-30.pdf"},
-  {"title":"IEEEXtreme 19.0","issuer":"IEEE","date":"2025-10-25","category":"Competition participation","team":"DigitalVanguard","description":"Participated in the IEEEXtreme 19.0 programming competition as a member of team DigitalVanguard.","file":"niketha-thavaneswaran-ieee-ieeextreme-19-participation-2025-10-25.pdf"},
-  {"title":"Trailblazers ’24","issuer":"AIESEC in University of Peradeniya","date":"2024-12-07","category":"Professional development","description":"Participated in Trailblazers ’24 at the University of Peradeniya, with active involvement in personal and professional development.","file":"niketha-thavaneswaran-aiesec-trailblazers-24-participation-2024-12-07.jpg"},
-  {"title":"IEEEXtreme 18.0","issuer":"IEEE","date":"2024-10-26","category":"Competition participation","team":"TheChiefs","description":"Participated in the IEEEXtreme 18.0 programming competition as a member of team TheChiefs.","file":"niketha-thavaneswaran-ieee-ieeextreme-18-participation-2024-10-26.pdf"}
+  {
+    "title": "C Intermediate",
+    "issuer": "Sololearn",
+    "date": "2026-02-05",
+    "category": "Course completion",
+    "credentialId": "CC-7IR1LLRX",
+    "description": "Completed intermediate-level study in C, demonstrating theoretical and practical understanding of the language.",
+    "file": "niketha-thavaneswaran-sololearn-c-intermediate-2026-02-05.pdf"
+  },
+  {
+    "title": "Tech for Everyone",
+    "issuer": "Sololearn",
+    "date": "2026-02-05",
+    "category": "Course completion",
+    "credentialId": "CC-YUMGVKHY",
+    "description": "Completed foundational technology learning, demonstrating theoretical and practical understanding of the course material.",
+    "file": "niketha-thavaneswaran-sololearn-tech-for-everyone-2026-02-05.pdf"
+  },
+  {
+    "title": "Introduction to C",
+    "issuer": "Sololearn",
+    "date": "2026-02-04",
+    "category": "Course completion",
+    "credentialId": "CC-DHPDBC2V",
+    "description": "Completed introductory study in C, building a foundation for further programming practice.",
+    "file": "niketha-thavaneswaran-sololearn-introduction-to-c-2026-02-04.pdf"
+  },
+  {
+    "title": "SQL Intermediate",
+    "issuer": "Sololearn",
+    "date": "2026-02-01",
+    "category": "Course completion",
+    "credentialId": "CC-XATX2FSR",
+    "description": "Completed intermediate-level SQL study, demonstrating theoretical and practical understanding of the course material.",
+    "file": "niketha-thavaneswaran-sololearn-sql-intermediate-2026-02-01.pdf"
+  },
+  {
+    "title": "Introduction to SQL",
+    "issuer": "Sololearn",
+    "date": "2026-01-30",
+    "category": "Course completion",
+    "credentialId": "CC-RGM0P4VY",
+    "description": "Completed introductory SQL study, building a foundation for working with relational databases.",
+    "file": "niketha-thavaneswaran-sololearn-introduction-to-sql-2026-01-30.pdf"
+  },
+  {
+    "title": "IEEEXtreme 19.0",
+    "issuer": "IEEE",
+    "date": "2025-10-25",
+    "category": "Competition participation",
+    "team": "DigitalVanguard",
+    "description": "Participated in the IEEEXtreme 19.0 programming competition as a member of team DigitalVanguard.",
+    "file": "niketha-thavaneswaran-ieee-ieeextreme-19-participation-2025-10-25.pdf"
+  },
+  {
+    "title": "Trailblazers ’24",
+    "issuer": "AIESEC in University of Peradeniya",
+    "date": "2024-12-07",
+    "category": "Professional development",
+    "description": "Participated in Trailblazers ’24 at the University of Peradeniya, with active involvement in personal and professional development.",
+    "file": "niketha-thavaneswaran-aiesec-trailblazers-24-participation-2024-12-07.jpg"
+  },
+  {
+    "title": "IEEEXtreme 18.0",
+    "issuer": "IEEE",
+    "date": "2024-10-26",
+    "category": "Competition participation",
+    "team": "TheChiefs",
+    "description": "Participated in the IEEEXtreme 18.0 programming competition as a member of team TheChiefs.",
+    "file": "niketha-thavaneswaran-ieee-ieeextreme-18-participation-2024-10-26.pdf"
+  }
 ]
