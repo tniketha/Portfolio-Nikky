@@ -148,10 +148,17 @@ def build_cv(root: Path, private_reference=None):
     text('AIESEC - Member | IEEE - Member | Zero Plastic, University of Vavuniya - Member', 'meta')
 
     if reference:
-        section('REFERENCE')
-        text('<b>' + escape(reference['name']) + '</b> | ' + escape(reference['role']))
-        text(escape(reference['qualifications']), 'meta')
-        text(escape(reference['phone']) + ' | ' + escape(reference['email']), 'meta')
+        references = reference if isinstance(reference, list) else [reference]
+        section('REFERENCES' if len(references) > 1 else 'REFERENCE')
+        for index, entry in enumerate(references):
+            if index:
+                story.append(Spacer(1, 4))
+            name = '<b>' + escape(entry['name']) + '</b>'
+            if entry.get('role'):
+                name += ' | ' + escape(entry['role'])
+            text(name)
+            text(escape(entry['qualifications']), 'meta')
+            text(escape(entry['phone']) + ' | ' + escape(entry['email']), 'meta')
 
     folder = 'output/pdf' if private_reference else 'public'
     output = root / folder / 'Niketha-Thavaneswaran-CV.pdf'
